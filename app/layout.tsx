@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ContactModalProvider } from "@/lib/contact-modal-context";
+import ContactModal from "@/components/ContactModal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -77,7 +79,10 @@ export default function RootLayout({
   return (
     <html lang="pt" className={`${inter.variable} ${satoshi.variable}`}>
       <body className="min-h-screen antialiased overflow-x-hidden">
-        {children}
+        <ContactModalProvider>
+          {children}
+          <ContactModal />
+        </ContactModalProvider>
       </body>
     </html>
   );

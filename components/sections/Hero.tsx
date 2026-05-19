@@ -2,6 +2,7 @@
 
 import { ArrowRight, ArrowDown, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import { useContactModal } from '@/lib/contact-modal-context';
 
 const stats = [
   { value: '+100',  label: 'Conteúdos criados' },
@@ -10,6 +11,7 @@ const stats = [
 ];
 
 export default function Hero() {
+  const { open: openModal } = useContactModal();
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -113,7 +115,7 @@ export default function Hero() {
               style={{ animationDelay: '0.3s' }}
             >
               <button
-                onClick={() => scrollTo('#contacto')}
+                onClick={openModal}
                 className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
                 style={{ background: '#E83030', boxShadow: '0 0 30px rgba(232,48,48,0.3)' }}
               >

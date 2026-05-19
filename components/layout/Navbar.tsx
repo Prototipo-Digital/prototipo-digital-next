@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import { useContactModal } from '@/lib/contact-modal-context';
 
 const navLinks = [
   { label: 'Início',    href: '#inicio' },
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [scrolled, setScrolled]    = useState(false);
   const [menuOpen, setMenuOpen]    = useState(false);
   const [activeSection, setActive] = useState('inicio');
+  const { open: openModal }        = useContactModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -89,7 +91,7 @@ export default function Navbar() {
             {/* Desktop CTA — right */}
             <div className="hidden lg:flex items-center justify-end">
               <button
-                onClick={() => scrollTo('#contacto')}
+                onClick={openModal}
                 className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
                 style={{ background: '#E83030' }}
               >
@@ -128,7 +130,7 @@ export default function Navbar() {
             </button>
           ))}
           <button
-            onClick={() => scrollTo('#contacto')}
+            onClick={() => { setMenuOpen(false); openModal(); }}
             className="mt-6 px-8 py-3 rounded-lg text-base font-semibold text-white"
             style={{ background: '#E83030' }}
           >
