@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Protótipo Digital — Marketing com Inteligência',
   description:
     'Agência de Marketing Digital especializada em estratégia, IA aplicada, gestão de redes sociais, criação de conteúdo e automação. Fazemos marcas crescer.',
-  alternates: { canonical: 'https://prototipo.digital' },
+  alternates: { canonical: 'https://prototipodigital.com' },
 };
 
 export default function Home() {
@@ -22,10 +22,10 @@ export default function Home() {
             '@graph': [
               {
                 '@type': 'Organization',
-                '@id': 'https://prototipo.digital/#organization',
+                '@id': 'https://prototipodigital.com/#organization',
                 name: 'Protótipo Digital',
-                url: 'https://prototipo.digital',
-                logo: 'https://prototipo.digital/images/logo.png',
+                url: 'https://prototipodigital.com',
+                logo: 'https://prototipodigital.com/images/logo.png',
                 description: 'Agência de Marketing Digital com IA — Marketing com Inteligência',
                 sameAs: [
                   'https://instagram.com/prototipo.digital',
@@ -34,9 +34,9 @@ export default function Home() {
               },
               {
                 '@type': 'LocalBusiness',
-                '@id': 'https://prototipo.digital/#business',
+                '@id': 'https://prototipodigital.com/#business',
                 name: 'Protótipo Digital',
-                url: 'https://prototipo.digital',
+                url: 'https://prototipodigital.com',
                 description: 'Agência de Marketing Digital especializada em estratégia, IA e automação.',
                 priceRange: '€€',
                 areaServed: { '@type': 'Country', name: 'Portugal' },
@@ -45,7 +45,7 @@ export default function Home() {
               {
                 '@type': 'Service',
                 serviceType: 'Marketing Digital',
-                provider: { '@id': 'https://prototipo.digital/#organization' },
+                provider: { '@id': 'https://prototipodigital.com/#organization' },
                 name: 'Serviços de Marketing Digital',
                 description:
                   'Gestão de redes sociais, criação de conteúdo, automação com IA, estratégia digital, branding e publicidade digital.',

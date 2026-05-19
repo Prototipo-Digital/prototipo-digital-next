@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://prototipo.digital/sitemap.xml',
+    sitemap: 'https://prototipodigital.com/sitemap.xml',
   };
 }

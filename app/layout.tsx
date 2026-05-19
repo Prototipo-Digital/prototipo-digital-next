@@ -21,7 +21,7 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://prototipo.digital"),
+  metadataBase: new URL("https://prototipodigital.com"),
   title: {
     default: "Protótipo Digital — Marketing com Inteligência",
     template: "%s | Protótipo Digital",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_PT",
-    url: "https://prototipo.digital",
+    url: "https://prototipodigital.com",
     siteName: "Protótipo Digital",
     title: "Protótipo Digital — Marketing com Inteligência",
     description:

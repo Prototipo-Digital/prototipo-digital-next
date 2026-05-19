@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     const supabaseUrl  = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey  = process.env.SUPABASE_SERVICE_ROLE_KEY;
     const resendApiKey = process.env.RESEND_API_KEY;
-    const toEmail      = process.env.CONTACT_EMAIL ?? 'geral@prototipo.digital';
+    const toEmail      = process.env.CONTACT_EMAIL ?? 'geral@prototipodigital.com';
 
     /* ── Supabase: store lead ── */
     if (supabaseUrl && supabaseKey) {
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     if (resendApiKey) {
       const resend = new Resend(resendApiKey);
       await resend.emails.send({
-        from:    'Protótipo Digital <noreply@prototipo.digital>',
+        from:    'Protótipo Digital <noreply@prototipodigital.com>',
         to:      [toEmail],
         replyTo: body.email,
         subject: `Novo lead: ${body.name}`,
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
       /* Confirmation to sender */
       await resend.emails.send({
-        from:    'Protótipo Digital <noreply@prototipo.digital>',
+        from:    'Protótipo Digital <noreply@prototipodigital.com>',
         to:      [body.email],
         subject: 'Recebemos a tua mensagem — Protótipo Digital',
         html: `
