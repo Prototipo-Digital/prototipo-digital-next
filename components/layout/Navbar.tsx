@@ -54,12 +54,13 @@ export default function Navbar() {
         style={{ background: scrolled ? 'rgba(10,10,10,0.96)' : 'transparent' }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Mobile: flex justify-between | Desktop: 3-col grid for true centering */}
+          <div className="flex items-center justify-between h-16 lg:h-20 lg:grid lg:grid-cols-3">
 
-            {/* Logo */}
-            <button onClick={() => scrollTo('#inicio')} className="flex items-center gap-3 group">
+            {/* Logo — left */}
+            <button onClick={() => scrollTo('#inicio')} className="flex items-center">
               <Image
-                src="/images/logo-white.png"
+                src="/images/logo.png"
                 alt="Protótipo Digital"
                 width={160}
                 height={40}
@@ -68,8 +69,8 @@ export default function Navbar() {
               />
             </button>
 
-            {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            {/* Desktop nav — center */}
+            <nav className="hidden lg:flex items-center justify-center gap-1">
               {navLinks.map(link => (
                 <button
                   key={link.href}
@@ -85,8 +86,8 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Desktop CTA — right */}
+            <div className="hidden lg:flex items-center justify-end">
               <button
                 onClick={() => scrollTo('#contacto')}
                 className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
