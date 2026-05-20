@@ -67,7 +67,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20 lg:grid lg:grid-cols-3">
 
             {/* Logo — left */}
-            <button onClick={() => scrollTo('#inicio')} className="flex items-center">
+            <button
+              onClick={() => {
+                if (pathname !== '/') { window.location.href = '/'; return; }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="flex items-center"
+            >
               <Image
                 src="/images/logo.png"
                 alt="Protótipo Digital"
