@@ -12,7 +12,7 @@ const navLinks = [
   { label: 'Serviços', href: '/servicos',  type: 'page'   as const },
   { label: 'Processo', href: '#processo',  type: 'scroll' as const },
   { label: 'Sobre',    href: '/sobre',     type: 'page'   as const },
-  { label: 'FAQ',      href: '#faq',       type: 'scroll' as const },
+  { label: 'Blog',     href: '/blog',      type: 'page'   as const },
   { label: 'Contacto', href: '#contacto',  type: 'modal'  as const },
 ];
 
