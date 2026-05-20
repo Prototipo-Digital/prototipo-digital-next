@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/sections/Footer';
-import ContactModal from '@/components/ContactModal';
+import ModalTriggerButton from '@/components/ui/ModalTriggerButton';
 import { ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -191,14 +191,13 @@ export default function ServicosPage() {
               <p className="text-sm mb-5" style={{ color: '#71717A' }}>
                 Não sabes qual o serviço certo para ti?
               </p>
-              <a
-                href="/#contacto"
+              <ModalTriggerButton
                 className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
                 style={{ background: '#E83030', boxShadow: '0 0 30px rgba(232,48,48,0.25)' }}
               >
                 Fala connosco
                 <ArrowUpRight size={16} />
-              </a>
+              </ModalTriggerButton>
             </div>
           </div>
         </section>

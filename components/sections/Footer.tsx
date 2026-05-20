@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContactModal } from '@/lib/contact-modal-context';
 
 const navLinks = [
   { label: 'Início',    href: '#inicio',    page: false },
@@ -58,6 +59,7 @@ const socials = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { open: openModal } = useContactModal();
 
   return (
     <footer
@@ -201,17 +203,13 @@ export default function Footer() {
             </ul>
 
             <div className="mt-6 pt-6 border-t" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-              <a
-                href="#contacto"
+              <button
+                onClick={openModal}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
                 style={{ color: '#E83030' }}
-                onClick={e => {
-                  e.preventDefault();
-                  document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' });
-                }}
               >
                 Pede o teu orçamento →
-              </a>
+              </button>
             </div>
           </div>
         </div>

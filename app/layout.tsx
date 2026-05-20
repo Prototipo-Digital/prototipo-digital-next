@@ -24,6 +24,7 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prototipodigital.com"),
+  icons: { icon: '/favicon.ico' },
   title: {
     default: "Protótipo Digital — Marketing com Inteligência",
     template: "%s | Protótipo Digital",
