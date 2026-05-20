@@ -5,6 +5,7 @@ import "./globals.css";
 import { ContactModalProvider } from "@/lib/contact-modal-context";
 import ContactModal from "@/components/ContactModal";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -89,6 +90,19 @@ export default function RootLayout({
       {process.env.NEXT_PUBLIC_GA_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
       )}
+      {/* Google Ads */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18170157954"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-config" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18170157954');
+        `}
+      </Script>
     </html>
   );
 }
