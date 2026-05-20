@@ -1,14 +1,15 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 const navLinks = [
-  { label: 'Início',    href: '#inicio' },
-  { label: 'Serviços',  href: '#servicos' },
-  { label: 'Processo',  href: '#processo' },
-  { label: 'Sobre',     href: '#diferenciacao' },
-  { label: 'FAQ',       href: '#faq' },
-  { label: 'Contacto',  href: '#contacto' },
+  { label: 'Início',    href: '#inicio',    page: false },
+  { label: 'Serviços',  href: '/servicos',  page: true  },
+  { label: 'Processo',  href: '#processo',  page: false },
+  { label: 'Sobre',     href: '/sobre',     page: true  },
+  { label: 'FAQ',       href: '#faq',       page: false },
+  { label: 'Contacto',  href: '#contacto',  page: false },
 ];
 
 const services = [
@@ -108,18 +109,30 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map(link => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm transition-colors hover:text-white"
-                    style={{ color: '#71717A' }}
-                    onClick={e => {
-                      e.preventDefault();
-                      const el = document.querySelector(link.href);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    {link.label}
-                  </a>
+                  {link.page ? (
+                    <Link
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm transition-colors hover:text-white"
+                      style={{ color: '#71717A' }}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-sm transition-colors hover:text-white"
+                      style={{ color: '#71717A' }}
+                      onClick={e => {
+                        e.preventDefault();
+                        const el = document.querySelector(link.href);
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -158,6 +171,28 @@ export default function Footer() {
                   style={{ color: '#71717A' }}
                 >
                   geral@prototipo.digital
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/prototipo.digital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-colors hover:text-white"
+                  style={{ color: '#71717A' }}
+                >
+                  @prototipo.digital
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://prototipodigital.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-colors hover:text-white"
+                  style={{ color: '#71717A' }}
+                >
+                  prototipodigital.com
                 </a>
               </li>
               <li>

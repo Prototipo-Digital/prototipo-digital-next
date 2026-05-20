@@ -1,17 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { useContactModal } from '@/lib/contact-modal-context';
 
 const navLinks = [
-  { label: 'Início',    href: '#inicio' },
-  { label: 'Serviços',  href: '#servicos' },
-  { label: 'Processo',  href: '#processo' },
-  { label: 'Sobre',     href: '#diferenciacao' },
-  { label: 'FAQ',       href: '#faq' },
-  { label: 'Contacto',  href: '#contacto' },
+  { label: 'Início',   href: '#inicio',    type: 'scroll' as const },
+  { label: 'Serviços', href: '/servicos',  type: 'page'   as const },
+  { label: 'Processo', href: '#processo',  type: 'scroll' as const },
+  { label: 'Sobre',    href: '/sobre',     type: 'page'   as const },
+  { label: 'FAQ',      href: '#faq',       type: 'scroll' as const },
+  { label: 'Contacto', href: '#contacto',  type: 'modal'  as const },
 ];
 
 export default function Navbar() {
@@ -19,6 +21,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen]    = useState(false);
   const [activeSection, setActive] = useState('inicio');
   const { open: openModal }        = useContactModal();
+  const pathname                   = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -41,9 +44,13 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  const scrollTo = (href: string) => {
+  const handleNav = (link: typeof navLinks[number]) => {
     setMenuOpen(false);
-    const el = document.querySelector(href);
+    if (link.type === 'modal') { openModal(); return; }
+    if (link.type === 'page') return; // handled by Link
+    // scroll
+    if (pathname !== '/') { window.location.href = '/' + link.href; return; }
+    const el = document.querySelector(link.href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -73,19 +80,20 @@ export default function Navbar() {
 
             {/* Desktop nav — center */}
             <nav className="hidden lg:flex items-center justify-center gap-1">
-              {navLinks.map(link => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollTo(link.href)}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                    activeSection === link.href.slice(1)
-                      ? 'text-white bg-white/[0.06]'
-                      : 'text-[#A1A1AA] hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map(link => {
+                const isActive = link.type === 'page'
+                  ? pathname === link.href
+                  : activeSection === link.href.slice(1);
+                const cls = `px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${isActive ? 'text-white bg-white/[0.06]' : 'text-[#A1A1AA] hover:text-white'}`;
+                if (link.type === 'page') {
+                  return <Link key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={cls}>{link.label}</Link>;
+                }
+                return (
+                  <button key={link.href} onClick={() => handleNav(link)} className={cls}>
+                    {link.label}
+                  </button>
+                );
+              })}
             </nav>
 
             {/* Desktop CTA — right */}
@@ -119,16 +127,26 @@ export default function Navbar() {
         style={{ background: 'rgba(10,10,10,0.97)', paddingTop: '4rem' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-2">
-          {navLinks.map(link => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="text-2xl font-semibold text-[#A1A1AA] hover:text-white transition-colors py-3"
-              style={{ fontFamily: "'Satoshi', sans-serif" }}
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map(link => {
+            const cls = "text-2xl font-semibold text-[#A1A1AA] hover:text-white transition-colors py-3";
+            if (link.type === 'page') {
+              return (
+                <Link key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={cls} onClick={() => setMenuOpen(false)}>
+                  {link.label}
+                </Link>
+              );
+            }
+            return (
+              <button
+                key={link.href}
+                onClick={() => handleNav(link)}
+                className={cls}
+                style={{ fontFamily: "'Satoshi', sans-serif" }}
+              >
+                {link.label}
+              </button>
+            );
+          })}
           <button
             onClick={() => { setMenuOpen(false); openModal(); }}
             className="mt-6 px-8 py-3 rounded-lg text-base font-semibold text-white"
