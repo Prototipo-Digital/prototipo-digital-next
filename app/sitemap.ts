@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://prototipodigital.com/contacto',
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
       url: 'https://prototipodigital.com/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
