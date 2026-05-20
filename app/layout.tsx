@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ContactModalProvider } from "@/lib/contact-modal-context";
 import ContactModal from "@/components/ContactModal";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -85,6 +86,9 @@ export default function RootLayout({
           <ContactModal />
         </ContactModalProvider>
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }
