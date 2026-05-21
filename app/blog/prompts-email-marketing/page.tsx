@@ -188,7 +188,7 @@ export default function ArticlePage() {
           </p>
 
           <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden mb-14 border" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-            <Image src="https://images.unsplash.com/photo-1596526131083-e8c633564a1?w=1200&q=80"
+            <Image src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80"
               alt="Email marketing com IA" fill className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px" priority />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.6) 100%)' }} />

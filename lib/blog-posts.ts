@@ -36,7 +36,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Ferramentas IA',
     readTime: '8 min',
     date: '21 Mai 2025',
-    image: 'https://images.unsplash.com/photo-1676573040366-a80d97c82c16?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=80',
   },
   {
     slug: 'calendario-conteudo-ia',
@@ -63,6 +63,6 @@ export const blogPosts: BlogPost[] = [
     category: 'Email Marketing',
     readTime: '6 min',
     date: '23 Mai 2025',
-    image: 'https://images.unsplash.com/photo-1596526131083-e8c633564a1?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
   },
 ];

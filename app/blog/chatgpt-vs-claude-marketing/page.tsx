@@ -59,7 +59,7 @@ export default function ArticlePage() {
           </p>
 
           <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden mb-14 border" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-            <Image src="https://images.unsplash.com/photo-1676573040366-a80d97c82c16?w=1200&q=80"
+            <Image src="https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=1200&q=80"
               alt="ChatGPT vs Claude para marketing digital" fill className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px" priority />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.6) 100%)' }} />
