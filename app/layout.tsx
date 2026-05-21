@@ -26,7 +26,12 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prototipodigital.com"),
-  icons: { icon: '/icon.png' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
+      { url: '/icon.png',    sizes: '512x512', type: 'image/png' },
+    ],
+  },
   title: {
     default: "Protótipo Digital — Marketing com Inteligência",
     template: "%s | Protótipo Digital",
@@ -81,7 +86,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className={`${inter.variable} ${satoshi.variable}`}>
+      <head>
+        {/* Google Tag Manager */}
+        <Script id="gtm-head" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KLPL5LV8');`}
+        </Script>
+        {/* End Google Tag Manager */}
+      </head>
       <body className="min-h-screen antialiased overflow-x-hidden">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KLPL5LV8"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <ContactModalProvider>
           {children}
           <ContactModal />
