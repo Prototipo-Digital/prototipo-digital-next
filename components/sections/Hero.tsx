@@ -123,14 +123,16 @@ export default function Hero() {
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </button>
 
-              <button
-                onClick={() => scrollTo('#servicos')}
+              <a
+                href="/servicos"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold text-white border transition-all duration-200 hover:bg-white/[0.05]"
                 style={{ borderColor: 'rgba(255,255,255,0.12)' }}
               >
                 Ver serviços
-                <ArrowDown size={15} className="transition-transform group-hover:translate-y-0.5" />
-              </button>
+                <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
 
             {/* Stats */}
